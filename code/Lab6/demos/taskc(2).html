@@ -1,0 +1,831 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Curreny's blog | Curreny's blog</title><meta name="author" content="Curreny"><meta name="copyright" content="Curreny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Shading Demo for objects                                                                                                        var renderer &#x3D; 0;              function run() {">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Curreny&#39;s blog">
+<meta property="og:url" content="https://curreny.github.io/code/Lab6/demos/taskc(2).html">
+<meta property="og:site_name" content="Curreny&#39;s blog">
+<meta property="og:description" content="Shading Demo for objects                                                                                                        var renderer &#x3D; 0;              function run() {">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://curreny.github.io/img/%E5%A4%B4%E5%83%8F.jpg">
+<meta property="article:published_time" content="2024-11-13T10:09:23.566Z">
+<meta property="article:modified_time" content="2024-11-13T10:09:23.566Z">
+<meta property="article:author" content="Curreny">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://curreny.github.io/img/%E5%A4%B4%E5%83%8F.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://curreny.github.io/code/Lab6/demos/taskc(2).html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Curreny\'s blog',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/1.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/%E5%A4%B4%E5%83%8F.jpg" alt="Logo"><span class="site-name">Curreny's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charet=UTF-8">
+        <title>Shading Demo for objects</title>
+        <link href="../css/colorpicker.css" type="text/css" rel="stylesheet" />
+        <link href="../css/jquery-ui.css" type="text/css" rel="stylesheet" />
+        <link href="../css/style.css" type="text/css" rel="stylesheet" />
+
+        <script type='text/javascript' src="../js/common/objloader.js"></script>
+        <script type="text/javascript" src="../js/common/webgl-utils.js"></script>
+        <script type="text/javascript" src="../js/common/initShaders.js"></script>
+        <script type="text/javascript" src="../js/common/gl-matrix.js"></script>
+
+        <script type='text/javascript' src='../js/ch06/c(2).js'></script>
+       
+        <script type="text/javascript">
+            var renderer = 0;
+
+            function run() {
+                var vertSrc = document.getElementById("code_vert").value;
+                var fragSrc = document.getElementById("code_frag").value;
+
+                renderer = new Renderer("gl-canvas", vertSrc, fragSrc);
+                renderer.init();
+                //renderer.display();
+            }
+
+            function updateRenderer() {
+                var vertSrc = document.getElementById("code_vert").value;
+                var fragSrc = document.getElementById("code_frag").value;
+
+                renderer.updateShader(vertSrc, fragSrc);
+                renderer.display();
+            }
+
+            var interval = setInterval(timerFunc, 30);
+
+            function timerFunc() {
+                renderer.display();
+            }
+
+            function shaderMethodChange() {
+                var d = parseInt(document.getElementById("select_shader_id").value);
+                renderer.modeVal = d;
+                switch (d) {
+                    default:
+                    case 1:
+                        document.getElementById("code_vert").value = document.getElementById("vshader-1").value;
+                        document.getElementById("code_frag").value = document.getElementById("fshader-1").value;
+                        break;
+                    case 2:
+                        document.getElementById("code_vert").value = document.getElementById("vshader-2").value;
+                        document.getElementById("code_frag").value = document.getElementById("fshader-2").value;
+                        break;
+                    case 3:
+                        document.getElementById("code_vert").value = document.getElementById("vshader-3").value;
+                        document.getElementById("code_frag").value = document.getElementById("fshader-3").value;
+                        break;
+                    case 4:
+                        document.getElementById("code_vert").value = document.getElementById("vshader-4").value;
+                        document.getElementById("code_frag").value = document.getElementById("fshader-4").value;
+                        break;
+                    case 5:
+                        document.getElementById("code_vert").value = document.getElementById("vshader-5").value;
+                        document.getElementById("code_frag").value = document.getElementById("fshader-5").value;
+                        break;
+                    case 6:
+                        document.getElementById("code_vert").value = document.getElementById("vshader-6").value;
+                        document.getElementById("code_frag").value = document.getElementById("fshader-6").value;
+                        break;
+                }
+                updateRenderer();
+            }
+
+            function colorModeChanged(){
+                var d = parseInt(document.getElementById("select_color_id").value);
+                renderer.colorMode = d;
+            }
+
+            function modelChanged(){
+                var file = document.getElementById( "modelFileInput" ).files[0];
+                renderer.modelFile = file;
+                renderer.initModel();
+            }
+
+        </script>
+    </head>
+    <body onload="run()">
+        <table>
+            <tr style="vertical-align:top;">
+            <td><canvas id="gl-canvas" width="640" height="480">Your browser does not support the HTML5 Canvas element</canvas><br>
+            <select onchange="shaderMethodChange()" id="select_shader_id">
+                 <option value="1" selected="selected">true normals and per vertex shading</option>
+                 <option value="2">true normals and per fragment shading</option>
+                 <option value="3">vertex normals and per vertex shading</option>
+                 <option value="4">vertex normals and per fragment shading</option>
+                 <option value="5">Gouraud Shading</option>
+                 <option value="6">Phong Shading</option>
+            </select>
+            <input type='file' id='modelFileInput' onchange="modelChanged()">
+            
+            <select onchange="colorModeChanged()" id="select_color_id">
+                <option value="1">normal</option>
+                <option value="2">Ambient Only</option>
+                <option value="3">Diffuse Only</option>
+                <option value="4">Specular Only</option>
+            </select>
+            </td>
+            <td><p align='left' id='debug-info'></p></td>
+            </tr>
+            
+            <table>
+                <tr>
+                <td align='right'>Ambient reflection (ka): </td> 
+                <td id='slider-ka-value' width='30px'>1.0</td> 
+                <td><input type='range' id='slider-ka' name='ka' min='0' max='1' step='0.01'></td>
+                <td align='right'>Ambient Color:</td>
+                <td colspan='2'><input type='color' id='ka-color' name='kacolor' value='#ff0000'></td>
+                <td align='center' colspan='2'>Light Position:</td>
+				<td align='center' colspan='2'>Light Color</td>
+				<td align='center' colspan='3'>Eye Position</td>
+                </tr>
+                <tr>
+                <td align='right'>Diffuse reflection (kd): </td>   
+                <td id='slider-kd-value' width='30px'>1.0</td> 
+                <td><input type='range' id='slider-kd' name='kd' min='0' max='1' step='0.01'></td>
+                <td align='right'>Diffuse Color: </td>
+                <td><input type='color' id='kd-color' name='kdcolor' value='#ffffff'></td>
+                <td align='right' width='30px'>X:</td>
+                <td id='slider-x-value' width='30px' align='center'>1</td>
+                <td width='150px'><input type='range' id='slider-x' name='xvalue' min='-20.0' max='20.0' step='0.1'></td>
+                <td align='right'>Ambient Color:</td>
+                <td><input type='color' id='lt-ambient-color' name='ltamcolor' value='#ffffff'></td>
+				<td align='right' width='50px'>Radius: </td>
+				<td id='slider-radius-value' width='30px' align='center'>1.5</td>
+				<td width='150px'><input type='range' id='slider-radius' name='rvalue' min='0.1' max='30.0' step='0.1' value='3.0'></td>
+				</tr>
+                <tr>
+                <td align='right'>Specular reflection (ks): </td>
+                <td id='slider-ks-value' width='30px'>1.0</td>
+                <td><input type='range' id='slider-ks' name='ks' min='0' max='1' step='0.01'></td>
+                <td align='right'>Specular Color: </td>
+                <td><input type='color' id='ks-color' name='kscolor' value='#ffffff'></td>
+                <td align='right' width='30px'>Y:</td>
+                <td id='slider-y-value' width='30px' align='center'>1</td>
+                <td width='150px'><input type='range' id='slider-y' name='yvalue' min='-20.0' max='20.0' step='0.1'></td>
+                <td align='right'>Diffuse Color:</td>
+                <td><input type='color' id='lt-diffuse-color' name='ltdfcolor' value='#ffffff'></td>
+				<td align='right' width='50px'>Theta: </td>
+				<td id='slider-theta-value' width='30px' align='center'>0</td>
+				<td width='150px'><input type='range' id='slider-theta' name='tvalue' min='0' max='180' step='1' value='45'></td>
+				</tr>
+                <tr>
+                <td align='right'>Shininess:</td>
+                <td id='slider-sh-value' width='30px'>80</td>
+                <td><input type='range' id='slider-sh' name='sh' min='1' max='500' step='1'></td>
+                <td align='right'>Background Color: </td>
+                <td><input type='color' id='bk-color' name='bkcolor' value='#00ffff'></td>
+                <td align='right' width='30px'>Z:</td>
+                <td id='slider-z-value' width='30px' align='center'>1</td>
+                <td width='150px'><input type='range' id='slider-z' name='zvalue' min='-10.0' max='10.0' step='0.1'></td>
+                <td align='right'>Specular Color:</td>
+                <td><input type='color' id='lt-specular-color' name='ltspcolor' value='#ffffff'></td>
+				<td align='right' width='50px'>Phi:</td>
+				<td id='slider-phi-value' width='30px' align='center'>0</td>
+				<td width='150px'><input type='range' id='slider-phi' name='pvalue' min='-180' max='180' step='1' value='45'></td>
+				</tr>                
+			</table>
+
+            <table border="0" class="maintable" cellpadding="5px" cellspacing="5px">
+                <tr style="vertical-align: top;">
+                <td><p align='center'>Vertex shader: </p><br>
+                <textarea cols="50" rows="20" class="code_input_vert" id="code_vert" wrap="logical">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform mat3 normalMatrix;
+
+uniform vec4 lightPosition;
+
+uniform float shininess;
+
+// material
+uniform vec4 ambientProduct;
+uniform vec4 diffuseProduct;
+uniform vec4 specularProduct;
+
+out vec3 normalInterp;
+out vec4 aColor;
+
+void main(){
+vec4 pos = modelViewMatrix * vPosition;
+normalInterp = normalize(normalMatrix * vNormal.xyz);
+
+gl_Position = projectionMatrix * pos;
+
+vec4 ambient = ambientProduct;
+
+vec3 N = normalize( normalInterp );
+vec3 L;
+
+if( lightPosition.w == 0.0 )
+{
+L = normalize( lightPosition.xyz );
+}
+else
+{
+L = normalize( lightPosition.xyz - pos.xyz );
+}
+
+float Kd = max( dot( L, N ), 0.0 );
+vec4 diffuse = Kd * diffuseProduct;
+
+float Ks = 0.0;
+if( Kd > 0.0 )
+{
+vec3 R = reflect( -L, N );
+vec3 E = -normalize( pos.xyz );
+float specAngle = max( dot( R, E ), 0.0 );
+Ks = pow( specAngle, shininess );
+}
+vec4 specular = Ks * specularProduct;
+
+aColor = ambient + diffuse + specular;
+aColor.a = 1.0;
+}
+                </textarea>
+                <p id="code_vert_error" style="width: 200px;"></p></td>
+                <td><p align='center'>Fragment shader: </p><br>
+                <textarea cols="50" rows="20" class="code_input" id="code_frag" wrap="logical">
+#version 300 es
+precision mediump float;
+
+in vec4 aColor;
+out vec4 fColor;
+
+void main()
+{
+	fColor = aColor;
+}
+                </textarea>
+                <p id="code_frag_error" style="width: 200px;"></p></td>
+                </tr>
+            </table>
+        </table>
+
+        	<textarea id="vshader-1" style="display:none;">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+
+out vec4 aColor;
+
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform vec4 lightPosition;
+uniform float shininess;
+uniform float materialKa, materialKd, materialKs;
+uniform mat3 normalMatrix;
+
+void main()
+{
+	// pos is vertex position in eye coordinates
+	vec3 pos = (modelViewMatrix * vPosition).xyz;
+
+	// vector from vertex position to light source
+	vec3 L;
+
+	// check for directional light
+	if(lightPosition.w == 0.0)
+	{ 
+		L = normalize(lightPosition.xyz);
+	}
+	else
+	{ 
+		L = normalize( lightPosition.xyz - pos );
+	}
+
+	// Because the eye point the is at the orgin
+	// the vector from the vertex position to the eye is
+	vec3 E = -normalize( pos );
+
+	// halfway vector
+	vec3 H = normalize( L + E );
+
+	// Transform vertex normal into eye coordinates
+	vec3 N = normalize( normalMatrix*vNormal.xyz);
+
+	// Compute terms in the illumination equation
+	vec4 ambient = materialKa * ambientProduct;
+
+	float Kd = max( dot(L, N), 0.0 );
+	vec4  diffuse = materialKd * Kd*diffuseProduct;
+
+	float Ks = pow( max(dot(N, H), 0.0), shininess );
+	vec4  specular = materialKs * Ks * specularProduct;
+
+	if( dot(L, N) < 0.0 ){
+		specular = vec4(0.0, 0.0, 0.0, 1.0);
+	} 
+
+	gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+
+	aColor = ambient + diffuse +specular;
+
+	aColor.a = 1.0;
+}
+	</textarea>
+        	<textarea id="fshader-1" style="display:none;">
+#version 300 es
+precision mediump float;
+in vec4 aColor;
+out vec4 fColor;
+
+void main()
+{
+	fColor = aColor;
+}
+	</textarea>
+        	<textarea id="vshader-2" style="display:none;">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+out vec3 N, L, E;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform vec4 lightPosition;
+uniform mat3 normalMatrix;
+
+void main()
+{
+	vec3 pos = (modelViewMatrix * vPosition).xyz;
+
+	// check for directional light
+	if(lightPosition.w == 0.0)
+	{
+		L = normalize(lightPosition.xyz);
+	}
+	else
+	{
+		L = normalize( lightPosition.xyz - pos );
+	}
+
+	E = -normalize(pos);
+	N = normalize( normalMatrix*vNormal.xyz);
+
+	gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+}
+	</textarea>
+        	<textarea id="fshader-2" style="display:none;">
+#version 300 es
+precision mediump float;
+
+uniform vec4 ambientProduct;
+uniform vec4 diffuseProduct;
+uniform vec4 specularProduct;
+uniform float shininess;
+uniform float materialKa, materialKd, materialKs;
+in vec3 N, L, E;
+out vec4 fColor;
+
+void main()
+{    
+	vec3 H = normalize( L + E );
+	vec4 ambient = materialKa * ambientProduct;
+
+	float Kd = max( dot(L, N), 0.0 );
+	vec4  diffuse = materialKd * Kd*diffuseProduct;
+
+	float Ks = pow( max(dot(N, H), 0.0), shininess );
+	vec4  specular = materialKs * Ks * specularProduct;
+
+	if( dot(L, N) < 0.0 ) specular = materialKs * vec4(0.0, 0.0, 0.0, 1.0);
+
+	fColor = ambient + diffuse +specular;
+	fColor.a = 1.0;
+}
+	</textarea>
+        	<textarea id="vshader-3" style="display:none;">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+
+out vec4 aColor;
+
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform vec4 lightPosition;
+uniform float shininess;
+uniform float materialKa, materialKd, materialKs;
+uniform mat3 normalMatrix;
+
+void main()
+{
+	vec3 pos = (modelViewMatrix * vPosition).xyz;
+	vec3 light = lightPosition.xyz;
+	vec3 L;
+
+	// check for directional light
+	if(lightPosition.w == 0.0) 
+		L = normalize(lightPosition.xyz);
+	else 
+		L = normalize( lightPosition.xyz - pos );
+
+	vec3 E = -normalize( pos );
+	vec3 H = normalize( L + E );
+
+	// Transform vertex normal into eye coordinates
+	vec3 N = normalize( normalMatrix*vNormal.xyz);
+
+	// Compute terms in the illumination equation
+	vec4 ambient = materialKa * ambientProduct;
+
+	float Kd = max( dot(L, N), 0.0 );
+	vec4  diffuse = materialKd * Kd*diffuseProduct;
+
+	float Ks = pow( max(dot(N, H), 0.0), shininess );
+	vec4  specular = materialKs * Ks * specularProduct;
+
+	if( dot(L, N) < 0.0 ) {
+		specular = vec4(0.0, 0.0, 0.0, 1.0);
+	} 
+
+	gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+
+	aColor = ambient + diffuse + specular;
+
+	aColor.a = 1.0;
+}
+	</textarea>
+        	<textarea id="fshader-3" style="display:none;">
+#version 300 es
+precision mediump float;
+
+in vec4 aColor;
+out vec4 fColor;
+
+void main()
+{
+	fColor = aColor;
+}
+	</textarea>
+        	<textarea id="vshader-4" style="display:none;">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+out vec3 N, L, E;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform vec4 lightPosition;
+uniform mat3 normalMatrix;
+
+void main()
+{
+	vec3 light;
+	vec3 pos = (modelViewMatrix * vPosition).xyz;
+
+	if(lightPosition.z == 0.0)
+	{
+		L = normalize(lightPosition.xyz);
+	}
+	else
+	{
+		L = normalize(lightPosition).xyz - pos;
+	}
+
+	E =  -normalize(pos);
+	N = normalize( normalMatrix*vNormal.xyz);
+	gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+}
+</textarea>
+        	<textarea id="fshader-4" style="display:none;">
+#version 300 es
+precision mediump float;
+
+uniform vec4 ambientProduct;
+uniform vec4 diffuseProduct;
+uniform vec4 specularProduct;
+uniform float shininess;
+uniform float materialKa, materialKd, materialKs;
+in vec3 N, L, E;
+out vec4 fColor;
+
+void main()
+{    
+	vec3 H = normalize( L + E );
+	vec4 ambient = materialKa * ambientProduct;
+
+	float Kd = max( dot(L, N), 0.0 );
+	vec4  diffuse = materialKd * Kd*diffuseProduct;
+
+	float Ks = pow( max(dot(N, H), 0.0), shininess );
+	vec4  specular = materialKs * Ks * specularProduct;
+
+	if( dot(L, N) < 0.0 ){
+		specular = materialKs * vec4(0.0, 0.0, 0.0, 1.0);
+	}
+
+	fColor = ambient + diffuse + specular;
+	fColor.a = 1.0;
+}
+	</textarea>
+        	<textarea id="vshader-5" style="display:none;">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform mat3 normalMatrix;
+
+uniform vec4 lightPosition;
+
+uniform float shininess;
+uniform float materialKa, materialKd, materialKs;
+
+// material
+uniform vec4 ambientProduct;
+uniform vec4 diffuseProduct;
+uniform vec4 specularProduct;
+
+out vec3 normalInterp;
+out vec4 aColor;
+
+void main(){
+	vec4 pos = modelViewMatrix * vPosition;
+	normalInterp = normalize(normalMatrix * vNormal.xyz);
+
+	gl_Position = projectionMatrix * pos;
+
+	vec4 ambient = ambientProduct;
+
+	vec3 N = normalize( normalInterp );
+	vec3 L;
+
+	if( lightPosition.w == 0.0 )
+	{
+		L = normalize( lightPosition.xyz );
+	}
+	else
+	{
+		L = normalize( lightPosition.xyz - pos.xyz );
+	}
+
+	float Kd = max( dot( L, N ), 0.0 );
+	vec4 diffuse = Kd * diffuseProduct;
+
+	float Ks = 0.0;
+	if( Kd > 0.0 )
+	{
+		vec3 R = reflect( -L, N );
+		vec3 E = -normalize( pos.xyz );
+		float specAngle = max( dot( R, E ), 0.0 );
+		Ks = pow( specAngle, shininess );
+	}
+	vec4 specular = Ks * specularProduct;
+
+	aColor = materialKa * ambient + materialKd * diffuse + materialKs * specular;
+	aColor.a = 1.0;
+}
+
+	</textarea>
+        	<textarea id="fshader-5" stlye="display:none">
+#version 300 es
+precision mediump float;
+
+in vec4 aColor;
+out vec4 fColor;
+
+void main()
+{
+	fColor = aColor;
+}
+	</textarea>
+        	<textarea id="vshader-6" stlye="display:none">
+#version 300 es
+in vec4 vPosition;
+in vec4 vNormal;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+uniform mat3 normalMatrix;
+
+out vec3 normalInterp;
+out vec4 vertexPos;
+
+void main(){
+	vertexPos = modelViewMatrix * vPosition;
+	normalInterp = normalize(normalMatrix * vNormal.xyz);
+	gl_Position = projectionMatrix * vertexPos;
+}
+	</textarea>
+        	<textarea id="fshader-6" style="display:none">
+#version 300 es
+precision mediump float;
+
+in vec3 normalInterp;
+in vec4 vertexPos;
+
+uniform vec4 lightPosition;
+uniform float shininess;
+
+uniform float materialKa, materialKd, materialKs;
+
+uniform vec4 ambientProduct;
+uniform vec4 diffuseProduct;
+uniform vec4 specularProduct;
+
+out vec4 fColor;
+
+void main()
+{
+	vec3 N = normalize( normalInterp );
+	vec3 L;
+	if( lightPosition.w == 0.0 )
+		L = normalize( lightPosition.xyz );
+	else
+		L = normalize( lightPosition.xyz - vertexPos.xyz );
+
+	vec4 ambient = ambientProduct;
+
+	float Kd = max( dot( L, N ), 0.0 );
+	vec4 diffuse = Kd * diffuseProduct;
+
+	float Ks = 0.0;
+
+	if( Kd > 0.0 )
+	{
+		vec3 R = reflect( -L, N );
+		vec3 V = normalize( -vertexPos.xyz );
+		float speculaAngle = max( dot( R, V ), 0.0 );
+		Ks = pow( speculaAngle, shininess );
+	}
+	vec4 specular = Ks * specularProduct;
+
+	fColor = materialKa * ambient + materialKd * diffuse + materialKs * specular;
+	fColor.a = 1.0;
+}
+
+	</textarea>
+    </body>
+</html></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Curreny</div><div class="author-info-description">平芜尽处是春山</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/curreny" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:sun_jinzhou@126.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/13/post6/" title="Computer Graphics Lab6-光照和着色"><img src="/img/post6/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Computer Graphics Lab6-光照和着色"/></a><div class="content"><a class="title" href="/2024/11/13/post6/" title="Computer Graphics Lab6-光照和着色">Computer Graphics Lab6-光照和着色</a><time datetime="2024-11-12T16:00:00.000Z" title="发表于 2024-11-13 00:00:00">2024-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/11/post5/" title="Computer Graphics Lab5-三维成像投影"><img src="/img/post5/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Computer Graphics Lab5-三维成像投影"/></a><div class="content"><a class="title" href="/2024/11/11/post5/" title="Computer Graphics Lab5-三维成像投影">Computer Graphics Lab5-三维成像投影</a><time datetime="2024-11-10T16:00:00.000Z" title="发表于 2024-11-11 00:00:00">2024-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/30/post4(2)/" title="Computer Graphics Lab4(2)-变换（2）"><img src="/img/post4(2)/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Computer Graphics Lab4(2)-变换（2）"/></a><div class="content"><a class="title" href="/2024/10/30/post4(2)/" title="Computer Graphics Lab4(2)-变换（2）">Computer Graphics Lab4(2)-变换（2）</a><time datetime="2024-10-29T16:00:00.000Z" title="发表于 2024-10-30 00:00:00">2024-10-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/22/post4/" title="Computer Graphics Lab4-变换（1）"><img src="/img/post4/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Computer Graphics Lab4-变换（1）"/></a><div class="content"><a class="title" href="/2024/10/22/post4/" title="Computer Graphics Lab4-变换（1）">Computer Graphics Lab4-变换（1）</a><time datetime="2024-10-21T16:00:00.000Z" title="发表于 2024-10-22 00:00:00">2024-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/09/post3/" title="Computer Graphics Lab3-动画和交互"><img src="/img/post3/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Computer Graphics Lab3-动画和交互"/></a><div class="content"><a class="title" href="/2024/10/09/post3/" title="Computer Graphics Lab3-动画和交互">Computer Graphics Lab3-动画和交互</a><time datetime="2024-10-08T16:00:00.000Z" title="发表于 2024-10-09 00:00:00">2024-10-09</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Computer-Graphics/"><span class="card-category-list-name">Computer Graphics</span><span class="card-category-list-count">7</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/html/" style="font-size: 1.15em; color: rgb(50, 199, 50);">html</a><a href="/tags/javascript/" style="font-size: 1.15em; color: rgb(118, 151, 141);">javascript</a><a href="/tags/WebGL/" style="font-size: 1.15em; color: rgb(50, 185, 57);">WebGL</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/11/">
+          <span class="card-archive-list-date">十一月 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/10/">
+          <span class="card-archive-list-date">十月 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/09/">
+          <span class="card-archive-list-date">九月 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">7</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-16T08:44:39.329Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><div id="footer-wrap"><div class="copyright">&copy;Thu Sep 12 2024 08:00:00 GMT+0800 (中国标准时间) - 2024 By Curreny</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
