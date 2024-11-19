@@ -4,15 +4,15 @@
     <meta http-equiv="Content-type" content="text/html;charset=utf-8">
     <title>Chap7 Demo 4 Textured Cube with Multiple Textures</title>
     <script id="vertex-shader" type="x-shader/x-vertex">
-#version 300 es
-in vec4 vPosition;
-in vec4 vColor;
-in vec2 vTexCoord;
+    #version 300 es
+    in vec4 vPosition;
+    in vec4 vColor;
+    in vec2 vTexCoord;
 
-out vec4 aColor;
-out vec2 aTexCoord;
+    out vec4 aColor;
+    out vec2 aTexCoord;
 
-uniform vec3 theta;
+    uniform vec3 theta;
 
     void main()
     {
