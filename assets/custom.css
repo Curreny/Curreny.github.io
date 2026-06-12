@@ -9,6 +9,19 @@ Add your custom CSS styles here to override or extend the default styles.
     src: url('LiuJianMaoCao-Regular.ttf') format('truetype');
 }
 
+/* 为中文正文指定稳定的衬线字体栈，避免不同浏览器回退到不同默认字体。 */
+body {
+    font-family:
+        et-book,
+        "Noto Serif SC",
+        "Source Han Serif SC",
+        "Songti SC",
+        SimSun,
+        STSong,
+        Georgia,
+        serif; 
+}
+
 /* 应用字体到特定文字 */
 .liujian-font {
     font-family: 'LiuJianMaoCao', serif;
