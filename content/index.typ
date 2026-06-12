@@ -3,7 +3,7 @@
 #show: template
 
 #{
-  tufted.margin-note(image("d1.jpg"))
+  tufted.margin-note(image("home_banner.jpg"))
   tufted.margin-note[
     #html.span(class: "liujian-font")[
       岁岁年年 叠于我身\

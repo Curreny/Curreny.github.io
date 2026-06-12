@@ -2,7 +2,7 @@
 #show: template
 
 #{
-  tufted.margin-note(image("d2.jpg"))
+  tufted.margin-note(image("avatar.jpg"))
   tufted.margin-note[
     #linebreak()
     *Email*: #link("mailto:sun_jinzhou@126.com", "sun_jinzhou@126.com") \
@@ -13,7 +13,7 @@
 
 = About Me?
 
-*浙江中医药大学医学信息工程* 即将毕业，推免至 *东南大学生物医学工程*\
+*#link("https://www.zcmu.edu.cn/")[浙江中医药大学]医学信息工程* 即将毕业，推免至 *#link("https://www.seu.edu.cn/")[东南大学]生物医学工程*\
 
 我出生于2004年10月，目前在杭州\
 
