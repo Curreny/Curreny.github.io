@@ -5,6 +5,12 @@
 /// 在每个具体页面中，都可以通过 `#show: template` 来应用模板
 /// 也可以通过 `template.with(...)` 来覆盖某些配置项，从而为某个页面定制参数
 #let template = tufted.tufted-web.with(
+  /// 自定义样式表。先加载本地字体声明，再加载站点覆盖样式。
+  css: (
+    "/assets/fonts/fonts.css",
+    "/assets/custom.css",
+  ),
+
   /// 网站顶部导航栏的链接字典。格式为 `("链接地址": "显示名称")`。
   // 例如，如果你想添加一个 Entry 页，你需要添加 `"/Entry/": "Entry"`
   // 然后在 `content/` 路径中新建 `Entry/`路径，在其中添加 `index.typ` 作为 Entry 页的内容

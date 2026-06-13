@@ -9,8 +9,28 @@ Add your custom CSS styles here to override or extend the default styles.
     src: url('LiuJianMaoCao-Regular.ttf') format('truetype');
 }
 
-/* 为中文正文指定稳定的衬线字体栈，避免不同浏览器回退到不同默认字体。 */
+/* 为正文指定 Anthropic 风格的英文字体，并为中文保留稳定的衬线回退。 */
 body {
+    font-family:
+        "Lora",
+        "Noto Serif SC",
+        "Source Han Serif SC",
+        "Songti SC",
+        SimSun,
+        STSong,
+        Georgia,
+        serif;
+}
+
+/* 标题和站点 UI 使用 et-book字体，中文部分回退到现代无衬线字体。 */
+h1,
+h2,
+h3,
+h4,
+h5,
+.site-header,
+.site-nav,
+footer {
     font-family:
         et-book,
         "Noto Serif SC",
@@ -20,6 +40,19 @@ body {
         STSong,
         Georgia,
         serif; 
+}
+
+/* 代码字体改用本地 JetBrains Mono，并保留常见等宽字体兜底。 */
+code,
+pre,
+kbd,
+samp {
+    font-family:
+        "JetBrains Mono",
+        "Fira Code",
+        Consolas,
+        "Courier New",
+        monospace;
 }
 
 /* 应用字体到特定文字 */
