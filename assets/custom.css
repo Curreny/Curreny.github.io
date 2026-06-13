@@ -3,12 +3,6 @@ CUSTOM STYLES
 
 Add your custom CSS styles here to override or extend the default styles.
 *******************************************************************************/
-/* 刘建毛草字体 */
-@font-face {
-    font-family: 'LiuJianMaoCao';
-    src: url('LiuJianMaoCao-Regular.ttf') format('truetype');
-}
-
 /* 为正文指定 Anthropic 风格的英文字体，并为中文保留稳定的衬线回退。 */
 body {
     font-family:
@@ -55,10 +49,3 @@ samp {
         monospace;
 }
 
-/* 应用字体到特定文字 */
-.liujian-font {
-    font-family: 'LiuJianMaoCao', serif;
-    font-size: 2.5em;
-    text-align: center;
-    display: block;
-}
