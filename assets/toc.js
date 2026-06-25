@@ -1,11 +1,25 @@
 /**
- * Builds a small floating table of contents for pages with enough subsections.
+ * 为包含标题的页面生成左侧浮动目录。
  */
 (() => {
-	const MIN_H3_HEADINGS = 3;
+	/**
+	 * 判断当前页面是否应该显示文章目录。
+	 * 约定只有 Blog 和 Doc 下的具体子页面展示目录，栏目首页和其他页面不展示。
+	 */
+	function shouldShowTocForCurrentPage() {
+		const segments = window.location.pathname
+			.replace(/\/+$/, "")
+			.split("/")
+			.filter(Boolean);
+
+		return (
+			segments.length >= 2 &&
+			(segments[0] === "Blog" || segments[0] === "Doc")
+		);
+	}
 
 	function collectHeadings(section) {
-		return Array.from(section.querySelectorAll("h2, h3")).filter(
+		return Array.from(section.querySelectorAll("h2, h3, h4, h5")).filter(
 			(heading) => !heading.closest('[role="doc-bibliography"]'),
 		);
 	}
@@ -110,16 +124,17 @@
 	}
 
 	function init() {
+		if (!shouldShowTocForCurrentPage()) {
+			return;
+		}
+
 		const section = document.querySelector("article > section");
 		if (!section) {
 			return;
 		}
 
 		const headings = collectHeadings(section);
-		const h3Count = headings.filter(
-			(heading) => heading.tagName === "H3",
-		).length;
-		if (h3Count < MIN_H3_HEADINGS) {
+		if (headings.length === 0) {
 			return;
 		}
 

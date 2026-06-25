@@ -728,8 +728,20 @@ TABLE OF CONTENTS
 	margin: 0 0 0.2em;
 }
 
-.toc-sidebar .toc-after-title {
+.toc-sidebar .toc-h2 {
+	padding-left: 0;
+}
+
+.toc-sidebar .toc-h3 {
 	padding-left: 0.8em;
+}
+
+.toc-sidebar .toc-h4 {
+	padding-left: 1.6em;
+}
+
+.toc-sidebar .toc-h5 {
+	padding-left: 2.4em;
 }
 
 .toc-sidebar a:any-link {
