@@ -15,6 +15,7 @@
       let dims = measure(it)
       let img-w = int(dims.width.pt())
       let img-h = int(dims.height.pt())
+      let img-style = "width: " + str(img-w) + "px; height: auto;"
 
       // When use scale to resize an image (e.g., `width: 50%`),
       // the measured dimensions are zero.
@@ -27,6 +28,7 @@
           decoding: "async",
           width: img-w,
           height: img-h,
+          style: img-style,
         )
       } else {
         html.img(
