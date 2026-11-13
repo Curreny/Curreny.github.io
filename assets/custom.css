@@ -49,3 +49,39 @@ samp {
         monospace;
 }
 
+ code,pre {
+    background-color: #f4f3ed;
+    /* opacity: 0.3; */
+    border-radius: 10px;
+}
+
+@media (min-width: 761px) {
+    :root {
+        --left-gutter: 15%;
+        --text-width: 55%;
+        --list-width: 50%;
+        --note-width: 50%;
+        --note-offset: -60%;
+    }
+
+    body {
+        width: calc(100% - var(--left-gutter));
+        padding-left: var(--left-gutter);
+    }
+
+    section > p {
+        width: var(--text-width);
+    }
+
+    section > dl,
+    section > ol,
+    section > ul {
+        width: var(--list-width);
+    }
+
+    .marginnote,
+    .sidenote {
+        width: var(--note-width);
+        margin-right: var(--note-offset);
+    }
+}

@@ -44,3 +44,7 @@ We’re working as quickly as we can to safely release Mythos-level capabilities
 In the meantime, we plan to expand Project Glasswing even further—prioritizing additional essential infrastructure providers, maintainers of critical open-source software, and safety testers. We intend for future expansions to cover organizations in the US and overseas, just as this one does. We also intend to scale up our Cyber Verification Program, which would grant Mythos-class capabilities to many more organizations for specific cyberdefense tasks.\
 
 In the future, frontier model releases will become increasingly high-stakes. Capabilities will continue to improve across all domains, including many that—like cybersecurity—can empower attackers and defenders alike. This will not be the last time we need to confront a challenge like this one. But Project Glasswing has taught us a great deal about how to respond when models cross important capability thresholds. If we’re successful, we hope to enable a permanent advantage for defenders.\
+
+#html.hr()
+
+#figure[#image("1.jpg")]
