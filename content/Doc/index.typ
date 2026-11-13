@@ -1,6 +1,7 @@
 #import "../index.typ": template, tufted
 #show: template.with(title: "Curreny的文档")
 
+#tufted.margin-note(image("1.jpg"))
 = 文档 / Doc
 
 == 2026
