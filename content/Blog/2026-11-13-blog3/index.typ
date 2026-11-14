@@ -1,6 +1,6 @@
 #import "../index.typ": template, tufted
 #show: template.with(
-  title: "关于 Codex 与 Clash，自己的一点折腾",
+  title: "不开系统代理和tun，如何给Codex配置代理",
   date: datetime(year: 2026, month: 11, day: 13),
 )
 
