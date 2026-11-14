@@ -4,7 +4,7 @@
   date: datetime(year: 2026, month: 11, day: 13),
 )
 
-= 关于 Codex 与 Clash，自己的一点折腾
+= 不开系统代理和tun，如何给Codex配置代理
 
 关于 Codex 与 Clash，自己的一点折腾，还是蛮值得分享的：\
 
@@ -25,14 +25,18 @@ NO_PROXY="localhost,127.0.0.1,::1"
 == 3.最近觉得，系统代理也不是最优解
 到近期突然发现开启 Clash 的系统代理也不是最佳的方案，会发现总有一些奇奇怪怪的流量飞走了。
 
-折腾 Clash 配置文件里的 rules 分流规则过于折腾，例如：
+折腾 Clash 配置文件里的 rules 分流规则过于繁琐，例如像这样给不同的流量请求配置不同的代理组：
 ```yaml
 - DOMAIN-SUFFIX,claude.ai,Anthropic
 - GEOSITE,CN,DIRECT
 - GEOSITE,openai,OpenAI
 - DOMAIN-SUFFIX,xxx域名后缀,DIRECT
+- GEOSITE,CN,DIRECT
+- GEOSITE,geolocation-!cn,Proxy
+- GEOIP,CN,DIRECT
+- MATCH,Proxy
 ```
-给不同的流量请求配置不同的代理组，但是 Clash Rules 只能管理已经进入 Clash 的流量，无法决定哪些应用应该使用系统代理。
+而且 Clash Rules 只能管理已经进入 Clash 的流量，无法决定哪些应用应该使用系统代理。
 
 == 4.抛弃系统代理的新方案
 于是找到能够抛弃系统代理的解决方案：Codex 桌面端是基于 Electron（Chromium 内核）开发的，而 Chromium 本身就支持通过启动参数指定代理服务器，找到本机 ChatGPT.exe 的稳定路径并创建快捷方式：
@@ -49,7 +53,7 @@ C:\Users\用户名\AppData\Local\Microsoft\WindowsApps\chatgpt-desktop.exe
 "C:\Users\用户名\AppData\Local\Microsoft\WindowsApps\chatgpt-desktop.exe" --proxy-server=http://127.0.0.1:端口
 ```
 2.macOS：`/Applications/ChatGPT.app/Contents/MacOS/ChatGPT`\
-创建快捷方式参考#link("https://x.com/liulangtutu/article/2066683148998439352")[如何在 macOS 优雅地为 Codex CLI 与 App 设置代理]
+创建快捷方式参考#link("https://x.com/liulangtutu/article/2066683148998439352")[如何在 macOS 优雅地为 Codex CLI 与 App 设置代理]，顺带一提，这篇帖子里提到的ZeroOmega我也一直在用，到Edge/Google的扩展程序里搜索安装，然后配置上代理地址和端口就可以，这样平时流量请求最多的浏览器就成功单独使用了代理，其他应用不受影响。
 
 == 参考：
 
