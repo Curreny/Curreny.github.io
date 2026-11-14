@@ -702,6 +702,13 @@ BLOG INDEX
 	white-space: nowrap;
 }
 
+@media (max-width: 760px) {
+	/* Blog index rows take full width on mobile */
+	.blog-entry {
+		width: 100%;
+	}
+}
+
 /*******************************************************************************
 TABLE OF CONTENTS
 *******************************************************************************/
