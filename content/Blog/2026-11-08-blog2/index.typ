@@ -1,11 +1,15 @@
 #import "../index.typ": template, tufted
 #import "@preview/theorion:0.6.0": *
-#show: template
+#show: template.with(
+  title: "Anthropic 提出新的四层 Memory 架构：Agent 如何通过 Dreaming 变得更聪明？",
+  date: datetime(year: 2026, month: 11, day: 8),
+)
+
 #set figure.caption(separator: [｜])
 
 本文摘自：#link("https://www.anthropic.com/research/components-of-agent-memory")[Anthropic · The components of agent memory]
 
-= 从宝可梦通关到Wiki表征：Anthropic最新的Agent Memory架构和“做梦”机制
+= Anthropic 提出新的四层 Memory 架构：Agent 如何通过 Dreaming 变得更聪明？
 
 #figure(
   image("assets/cover.jpg")

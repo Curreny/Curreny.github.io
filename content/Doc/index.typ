@@ -5,9 +5,28 @@
 = 文档 / Doc
 
 == 2026
-  - #link("blog-template/")[博客模板]
-  - #link("website-config/")[网站配置]
-  - #link("typst-example/")[Typst 示例]
-  - #link("github-deploy/")[GitHub 网站部署]
-  - #link("custom-styling/")[自定义样式]
-
+#tufted.blog-entry(
+  date: datetime(year: 2026, month: 6, day: 12),
+  path: "blog-template/",
+  title: "博客模板",
+)
+#tufted.blog-entry(
+  date: datetime(year: 2026, month: 6, day: 12),
+  path: "website-config/",
+  title: "网站配置",
+)
+#tufted.blog-entry(
+  date: datetime(year: 2026, month: 6, day: 12),
+  path: "typst-example/",
+  title: "Typst 示例",
+)
+#tufted.blog-entry(
+  date: datetime(year: 2026, month: 6, day: 12),
+  path: "github-deploy/",
+  title: "GitHub 网站部署",
+)
+#tufted.blog-entry(
+  date: datetime(year: 2026, month: 6, day: 12),
+  path: "custom-styling/",
+  title: "自定义样式",
+)

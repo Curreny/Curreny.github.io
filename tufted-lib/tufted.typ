@@ -25,6 +25,7 @@
   extra-info: none,
   website-title: "",
   website-url: none,
+  favicon: "/assets/favicon.ico",
 
   // For SEO
   image-path: none,

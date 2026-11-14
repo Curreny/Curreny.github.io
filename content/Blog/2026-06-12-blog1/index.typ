@@ -1,5 +1,9 @@
 #import "../index.typ": template, tufted
-#show: template
+#show: template.with(
+  title: "博客示例",
+  date: datetime(year: 2026, month: 6, day: 12),
+)
+
 
 = 博客示例
 

@@ -1,5 +1,5 @@
 #import "../../config.typ": template, tufted
-#show: template
+#show: template.with(title: "关于Curreny")
 
 #{
   tufted.margin-note(image("1.jpg"))

@@ -1,5 +1,8 @@
 #import "../index.typ": template, tufted
-#show: template
+#show: template.with(
+  title: "关于 Codex 与 Clash，自己的一点折腾",
+  date: datetime(year: 2026, month: 11, day: 13),
+)
 
 = 关于 Codex 与 Clash，自己的一点折腾
 
@@ -48,7 +51,7 @@ C:\Users\用户名\AppData\Local\Microsoft\WindowsApps\chatgpt-desktop.exe
 2.macOS：`/Applications/ChatGPT.app/Contents/MacOS/ChatGPT`\
 创建快捷方式参考#link("https://x.com/liulangtutu/article/2066683148998439352")[如何在 macOS 优雅地为 Codex CLI 与 App 设置代理]
 
-参考：
+== 参考：
 
 - #link("https://x.com/liulangtutu/article/2066683148998439352")
 - #link("https://liudanking.com/beautiful-life/codex-proxy-on-macos/")
