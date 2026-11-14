@@ -14,9 +14,9 @@
 == 2.关闭 TUN，仅开启系统代理
 于是乎尝试：关闭 TUN 模式只保留系统代理，在 `.codex/.env`里单独写上代理环境变量：
 ```bash
-HTTP_PROXY="http://127.0.0.1:7890"
-HTTPS_PROXY="http://127.0.0.1:7890"
-ALL_PROXY="http://127.0.0.1:7890"
+HTTP_PROXY="http://127.0.0.1:端口"
+HTTPS_PROXY="http://127.0.0.1:端口"
+ALL_PROXY="http://127.0.0.1:端口"
 NO_PROXY="localhost,127.0.0.1,::1"
 ```
 这个方案解决了此前 Codex 与服务端建立 WebSocket 长连接时反复Reconnecting（5/5）的问题，能够正常使用。
@@ -52,8 +52,13 @@ C:\Users\用户名\AppData\Local\Microsoft\WindowsApps\chatgpt-desktop.exe
 ```bash
 "C:\Users\用户名\AppData\Local\Microsoft\WindowsApps\chatgpt-desktop.exe" --proxy-server=http://127.0.0.1:端口
 ```
-2.macOS：`/Applications/ChatGPT.app/Contents/MacOS/ChatGPT`\
-创建快捷方式参考#link("https://x.com/liulangtutu/article/2066683148998439352")[如何在 macOS 优雅地为 Codex CLI 与 App 设置代理]，顺带一提，这篇帖子里提到的ZeroOmega我也一直在用，到Edge/Google的扩展程序里搜索安装，然后配置上代理地址和端口就可以，这样平时流量请求最多的浏览器就成功单独使用了代理，其他应用不受影响。
+2.macOS：
+```
+/Applications/ChatGPT.app/Contents/MacOS/ChatGPT
+```
+
+创建快捷方式参考#link("https://x.com/liulangtutu/article/2066683148998439352")[如何在 macOS 优雅地为 Codex CLI 与 App 设置代理]。 \
+顺带一提，这篇帖子里提到的ZeroOmega我也一直在用，到Edge/Google的扩展程序里搜索安装，然后配置上代理地址和端口就可以，这样平时流量请求最多的浏览器就成功单独使用了代理，其他应用不受影响。
 
 == 参考：
 
